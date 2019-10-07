@@ -25,10 +25,6 @@ void ten_two(unsigned int decimal)
                 base = 1;
                 flag = flag - 4;
        }
-       for(i=0;i<32;i++){              
-                printf("%d",addr[i]);
-       }
-       printf("\n");
 }
 
 unsigned long long two_ten(unsigned long long binary)
@@ -52,10 +48,6 @@ void vtop()
         unsigned long long pt;
         unsigned long long offset;
 
-        for(i=0;i<32;i++){
-                printf("%d",addr[i]);
-        }
-        printf("\n");
         for(i=0;i<10;i++){
                 pdt += addr[i]*base;
                 base /= 10;
@@ -76,7 +68,7 @@ void vtop()
         }
         offset = two_ten(offset);
 
-        printf("PDT[%lld]におけるPDEの先頭20byteの物理アドレスにある%lld番目の先頭20bitの物理アドレスから%lldbyte進んだアドレス\n",pdt,pt,offset);
+        printf("PDT[%lld]におけるPDEの先頭20bitの物理アドレスにあるPTの%lld番目のPTEの先頭20bitの物理アドレスから%lldbyte進んだアドレス\n",pdt,pt,offset);
 }
 
 int main()
@@ -86,6 +78,7 @@ int main()
         for(i=0;i<32;i++){
                 addr[i] = 0; 
         }
+        printf("Please type virtual address for the physical address\n");
         scanf("%x",&v_addr);
         ten_two(v_addr);
         vtop();
